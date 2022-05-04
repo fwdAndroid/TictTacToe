@@ -8,7 +8,7 @@ Responsive({required this.child});
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(constraints: BoxConstraints(
-        maxWidth:600,
+        maxWidth:900,
         
       ),child: child,),
       
