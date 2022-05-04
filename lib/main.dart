@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/screens/create_room_screen.dart';
+import 'package:tictactoe/screens/join_roon_screen.dart';
+import 'package:tictactoe/screens/main_menu_screen.dart';
 import 'package:tictactoe/utils/colors.dart';
 
 void main() {
@@ -13,10 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark(
-
-      ).copyWith(scaffoldBackgroundColor: bgColor),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: bgColor),
+      routes: {
+        MainMenuScreen.routeName: (context) => const MainMenuScreen(),
+        JoinRoom.routeName: (context) => const JoinRoom(),
+        CreateRoom.routeName: (context) => const CreateRoom()
+      },
+      initialRoute: MainMenuScreen.routeName,
     );
   }
 }
