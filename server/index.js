@@ -27,7 +27,8 @@ io.on("connection",(socket) => {
     socket.on("createRoom",async ({nickname}) => {
         console.log(nickname);
         //Creating Room
-        let room = new Room();
+        try{
+            let room = new Room();
         let player = {
              socketID: socket.id,
              nickname,
@@ -36,6 +37,17 @@ io.on("connection",(socket) => {
         room.players.push(player);
         room.turn = player;
        room = await room.save();
+       
+       console.log(room);
+       //Save Room ID
+       const roomId = room._id.toString();
+       socket.join(roomId);
+       //Tell The Client room is created and goto next page
+       io.to(roomId).emit("createRoomSuccess", room);
+        }catch(e){
+            console.log(e);
+        }
+
     });
 })
 
