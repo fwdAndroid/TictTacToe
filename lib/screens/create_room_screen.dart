@@ -26,7 +26,7 @@ class _CreateRoomState extends State<CreateRoom> {
   @override
   void initState() {
     super.initState();
-    socketMethods.createRoomSuccessListner(context);
+    socketMethods.createRoomSuccessListener(context);
   }
   @override
   Widget build(BuildContext context) {

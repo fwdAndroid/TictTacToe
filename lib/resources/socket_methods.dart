@@ -10,10 +10,12 @@ class SocketMethods {
       _socketClient.emit('createRoom', {'nickname': nickname});
     }
   }
-  void createRoomSuccessListner(BuildContext context){
+
+
+ void createRoomSuccessListener(BuildContext context) {
     _socketClient.on('createRoomSuccess', (room) {
-      print(room);
       Navigator.pushNamed(context, GameScreen.routeName);
     });
   }
+
 }
