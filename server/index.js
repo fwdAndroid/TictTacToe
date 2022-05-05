@@ -35,7 +35,7 @@ io.on("connection",(socket) => {
         };
         room.players.push(player);
         room.turn = player;
-        await room.save();
+       room = await room.save();
     });
 })
 
