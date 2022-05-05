@@ -24,6 +24,7 @@ mongoose.connect(DB).then(() => {
 //Socket Connection
 io.on('connection',(socket) => {
     console.log("connect");
+    socket.on("createRoom",({ nickname }) => {});
 })
 
 server.listen(port,'0.0.0.0',() => {
