@@ -24,6 +24,11 @@ class _CreateRoomState extends State<CreateRoom> {
     _namecontroller.dispose();
   }
   @override
+  void initState() {
+    super.initState();
+    socketMethods.createRoomSuccessListner(context);
+  }
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
@@ -43,7 +48,8 @@ class _CreateRoomState extends State<CreateRoom> {
                   SizedBox(height: size.height * 0.08,),
                   CustomTextField(controller: _namecontroller, hintText: 'Enter Your Nick Name'),
                                   SizedBox(height: size.height * 0.042,),
-                 CustomButtons(onTap: ()=> socketMethods.creatRoom(_namecontroller.text), text: 'Create')
+                 CustomButtons(onTap: ()=> socketMethods.creatRoom(_namecontroller.text), text: 'Create'),
+                 
             ],
           ),
         ),
