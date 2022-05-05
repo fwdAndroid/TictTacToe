@@ -9,6 +9,7 @@ var server = http.createServer(app);
 var io = require("socket.io")(server);
 
 const mongoose = require("mongoose");
+const Room = require("./models/room");
 
 // Middle Ware use to transfer data from client to server side
 app.use(express.json());
@@ -25,6 +26,16 @@ io.on("connection",(socket) => {
     console.log("connect");
     socket.on("createRoom",async ({nickname}) => {
         console.log(nickname);
+        //Creating Room
+        let room = new Room();
+        let player = {
+             socketID: socket.id,
+             nickname,
+             playerType:'X'
+        };
+        room.players.push(player);
+        room.turn = player;
+        await room.save();
     });
 })
 
