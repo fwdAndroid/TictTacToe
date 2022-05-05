@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/resources/socket_methods.dart';
 import 'package:tictactoe/responsiveness/responsive.dart';
 import 'package:tictactoe/widgets/custom_buttons.dart';
 import 'package:tictactoe/widgets/custom_text.dart';
@@ -14,6 +15,7 @@ class CreateRoom extends StatefulWidget {
 }
 class _CreateRoomState extends State<CreateRoom> {
   TextEditingController _namecontroller = TextEditingController();
+  SocketMethods socketMethods = SocketMethods();
 
   @override
   void dispose() {
@@ -41,7 +43,7 @@ class _CreateRoomState extends State<CreateRoom> {
                   SizedBox(height: size.height * 0.08,),
                   CustomTextField(controller: _namecontroller, hintText: 'Enter Your Nick Name'),
                                   SizedBox(height: size.height * 0.042,),
-                 CustomButtons(onTap: (){}, text: 'Create')
+                 CustomButtons(onTap: ()=> socketMethods.creatRoom(_namecontroller.text), text: 'Create')
             ],
           ),
         ),
